@@ -9,6 +9,7 @@ namespace TelephoneBook
     public class Book
     {
         public static List<Phone> phone;
+        static Phone NewPhone;
 
         public Book()
         {
@@ -17,18 +18,31 @@ namespace TelephoneBook
 
         public void AddNum(string Number , string Name)
         {
-            Phone NewPhone = new Phone();
+            NewPhone = new Phone();
             NewPhone.Name = Name;
             NewPhone.Number = Number;
 
             phone.Add(NewPhone); 
         }
 
-        public static List<Phone> Input()
+        public List<Phone> Input()
         {
             if(phone!=null)
             return phone.ToList();
             return null;
+        }
+
+        public void Delete(int Index)
+        {
+            if(phone != null)
+            phone.RemoveAt(Index);
+        }
+
+        public bool Search(string Num)
+        {
+            if (phone.Find(x => x.Number == Num) == null)
+                return true;
+            return false;
         }
 
     }

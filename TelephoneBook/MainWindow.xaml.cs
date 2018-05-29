@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
 
 namespace TelephoneBook
 {
@@ -22,22 +21,42 @@ namespace TelephoneBook
     public partial class MainWindow : Window
     {
         public List<Phone> List { get; set; }
+        Book b = new Book();
 
         public MainWindow()
         {
             InitializeComponent();
-            List = new List<Phone>();
-
+            b.AddNum("76767667","dggd");
             Updata();
         }
 
         public void Updata()
         {
-            List = Book.Input();
+            List = b.Input();
             DataContext = this;
+            ((ListView)Table).GetBindingExpression(ListView.ItemsSourceProperty)
+                    .UpdateTarget();
         }
 
+        public void Button_Click(object sender, RoutedEventArgs e)
+        {
+            double Temp;
 
+            if (Double.TryParse(Text1.Text,out Temp))
+            {
+                if (b.Search(Text1.Text))
+                {
+                    b.AddNum(Text1.Text, Text2.Text);
+                    Updata();
+                }
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            b.Delete(Table.SelectedIndex);
+            Updata();
+        }
     }
     
 }

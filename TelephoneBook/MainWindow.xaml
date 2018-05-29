@@ -5,16 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TelephoneBook"
         mc:Ignorable="d"
+             xmlns:converters="clr-namespace:TelephoneBook"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        <ListView ItemsSource="{Binding List}" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,250,0"  >
+        <ListView  ItemsSource="{Binding List }" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,280,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Number" Width="200"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Number}" Header="Name" Width="200"/>
+                    <GridViewColumn  DisplayMemberBinding="{Binding Number}" Header="Number"    Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}"/>
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Delete" Click="MenuItem_Click"/>
+
+                </ContextMenu>
+            </ListView.ContextMenu>
         </ListView>
+        <TextBox Name="Text1" HorizontalAlignment="Right" Height="18" Margin="573,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="Text2" HorizontalAlignment="Right" Height="18" Margin="573,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
+        <Button Content="Добавить новый номер" HorizontalAlignment="Right" Margin="573,56,0,0" VerticalAlignment="Top" Width="200" Click="Button_Click"/>
+        <Label Content="Имя:" HorizontalAlignment="Right" Margin="0,27,219,0" VerticalAlignment="Top" Height="24" Width="51">
+
+        </Label>
+        <Label Content="Номер:" HorizontalAlignment="Right" Margin="0,4,219,0" VerticalAlignment="Top" Height="24" Width="51"/>
 
     </Grid>
 </Window>
