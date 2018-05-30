@@ -24,7 +24,7 @@ namespace TelephoneBook
         Book b = new Book();
 
         public MainWindow()
-        {
+        {            
             Check.CheckFile();
             b.AddAll(FileOperations.Load.LoadInfo("SaveInfo/List.TB"));
             InitializeComponent();

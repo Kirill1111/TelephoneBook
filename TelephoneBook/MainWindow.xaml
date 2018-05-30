@@ -10,9 +10,15 @@
              xmlns:converters="clr-namespace:TelephoneBook"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+
         <DataTemplate x:Key="lvDataTemplate">
-            <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+            <Border Name="border" BorderThickness="1" Padding="5" Margin="0">
+                <Grid>
+                    <TextBlock TextWrapping="WrapWithOverflow" />
+                </Grid>
+            </Border>
         </DataTemplate>
+
     </Window.Resources>
     
     <Grid>
@@ -20,8 +26,21 @@
         <ListView Background="#EFEFF2" Foreground="Black" ItemTemplate="{StaticResource lvDataTemplate}" ItemsSource="{Binding List }" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,280,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  DisplayMemberBinding="{Binding Number}" Header="Number"    Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}"/>
+                    <GridViewColumn  Header="Number"    Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Number}" TextWrapping="Wrap" Margin="5"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Name" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="5"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
             <ListView.ContextMenu>
