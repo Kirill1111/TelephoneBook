@@ -13,7 +13,7 @@ namespace TelephoneBook.FileOperations
         public static List<Phone> LoadInfo(string path)
         {
             string Str = File.ReadAllText(path);
-
+ 
             if (Str.Length > 0)
             {
                 result = Str.Split(new char[] { '|', '&' });
@@ -21,7 +21,7 @@ namespace TelephoneBook.FileOperations
                 result = result.Where(x => x != null).ToArray();
 
                 List<Phone> phone = new List<Phone>();
-
+                
                 for (int i = 0; i < result.Length; i += 2)
                 {
                     Phone Myphone = new Phone();

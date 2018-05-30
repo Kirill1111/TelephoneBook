@@ -15,8 +15,7 @@ namespace TelephoneBook.FileOperations
         {
             foreach(var i in phone)
             {
-                Str += i.Name+"|";
-                Str += i.Number + "&";
+                Str += i.Name+"|" + i.Number + "&";
             }
 
             File.WriteAllText(path,Str);

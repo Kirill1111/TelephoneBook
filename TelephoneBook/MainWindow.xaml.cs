@@ -25,6 +25,7 @@ namespace TelephoneBook
 
         public MainWindow()
         {
+            Check.CheckFile();
             b.AddAll(FileOperations.Load.LoadInfo("SaveInfo/List.TB"));
             InitializeComponent();
             Updata();
@@ -42,13 +43,21 @@ namespace TelephoneBook
         {
             double Temp;
 
-            if (Double.TryParse(Text1.Text,out Temp))
+            if (Double.TryParse(Text1.Text, out Temp))
             {
                 if (b.Search(Text1.Text))
                 {
                     b.AddNum(Text1.Text, Text2.Text);
                     Updata();
                 }
+                else
+                {
+                    MessageBox.Show("Такой номер уже существует");
+                }
+            }
+            else
+            {
+                MessageBox.Show("В номере должны быть только цифры");
             }
         }
 
