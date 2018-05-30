@@ -7,9 +7,15 @@
         mc:Ignorable="d"
              xmlns:converters="clr-namespace:TelephoneBook"
         Title="MainWindow" Height="450" Width="800">
-
+    <Window.Resources>
+        <DataTemplate x:Key="lvDataTemplate">
+            <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+        </DataTemplate>
+    </Window.Resources>
+    
     <Grid>
-        <ListView  ItemsSource="{Binding List }" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,280,0">
+
+        <ListView ItemTemplate="{StaticResource lvDataTemplate}" ItemsSource="{Binding List }" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,280,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn  DisplayMemberBinding="{Binding Number}" Header="Number"    Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}"/>
@@ -19,7 +25,6 @@
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Delete" Click="MenuItem_Click"/>
-
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>

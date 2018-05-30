@@ -25,8 +25,8 @@ namespace TelephoneBook
 
         public MainWindow()
         {
+            b.AddAll(FileOperations.Load.LoadInfo("SaveInfo/List.TB"));
             InitializeComponent();
-            b.AddNum("76767667","dggd");
             Updata();
         }
 
@@ -57,6 +57,12 @@ namespace TelephoneBook
             b.Delete(Table.SelectedIndex);
             Updata();
         }
+
+        ~MainWindow()
+        {
+            FileOperations.Save.SaveInfo(List.ToArray(),"SaveInfo/List.TB");
+        }
+
     }
     
 }

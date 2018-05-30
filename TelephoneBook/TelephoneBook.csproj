@@ -72,6 +72,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Book.cs" />
+    <Compile Include="FileOperations\Load.cs" />
+    <Compile Include="FileOperations\Save.cs" />
     <Compile Include="PercentageConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
