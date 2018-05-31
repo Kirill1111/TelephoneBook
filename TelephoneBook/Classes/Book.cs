@@ -8,7 +8,7 @@ namespace TelephoneBook
 {
     public class Book
     {
-        public static List<Phone> phone;
+        public List<Phone> phone;
         Phone NewPhone;
 
         public Book()

@@ -26,15 +26,15 @@
         <ListView Background="#EFEFF2" Foreground="Black" ItemTemplate="{StaticResource lvDataTemplate}" ItemsSource="{Binding List }" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,280,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  Header="Number"    Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
+                    <GridViewColumn  Header="Номер"    Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Number}" TextWrapping="Wrap" Margin="5"/>
+                                <TextBlock Validation.ErrorTemplate="{x:Null}" Text="{Binding Number}" TextWrapping="Wrap" Margin="5"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Name" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
+                    <GridViewColumn Header="Имя" Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Name}" TextWrapping="Wrap" Margin="5"/>
@@ -46,6 +46,7 @@
             <ListView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Delete" Click="MenuItem_Click"/>
+                    <MenuItem Header="Edit" Click="MenuItem_Click_1"/>
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>

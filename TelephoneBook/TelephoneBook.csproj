@@ -98,8 +98,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\Check.cs" />
+    <Compile Include="Window\Edit.xaml.cs">
+      <DependentUpon>Edit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Style\VS2012WindowStyle.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="Window\Edit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -108,10 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Book.cs" />
-    <Compile Include="FileOperations\Load.cs" />
-    <Compile Include="FileOperations\Save.cs" />
+    <Compile Include="Classes\FileOperations\Load.cs" />
+    <Compile Include="Classes\FileOperations\Save.cs" />
     <Compile Include="Classes\PercentageConverter.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Window\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>

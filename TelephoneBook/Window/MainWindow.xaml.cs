@@ -43,22 +43,27 @@ namespace TelephoneBook
         {
             double Temp;
 
-            if (Double.TryParse(Text1.Text, out Temp))
+            if (Text1.Text != "" && Text2.Text != "")
             {
-                if (b.Search(Text1.Text))
+                if (Double.TryParse(Text1.Text, out Temp))
                 {
-                    b.AddNum(Text1.Text, Text2.Text);
-                    Updata();
+                    if (b.Search(Text1.Text))
+                    {
+                        b.AddNum(Text1.Text, Text2.Text);
+                        Updata();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Такой номер уже существует");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Такой номер уже существует");
+                    MessageBox.Show("В номере должны быть только цифры");
                 }
             }
             else
-            {
-                MessageBox.Show("В номере должны быть только цифры");
-            }
+                MessageBox.Show("Заполните поля");
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -72,6 +77,21 @@ namespace TelephoneBook
             FileOperations.Save.SaveInfo(List.ToArray(),"SaveInfo/List.TB");
         }
 
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            Edit edit = new Edit(Table.SelectedIndex,b, List[Table.SelectedIndex].Number);
+            edit.ShowDialog();
+
+            if (edit.NewNumber != "" && edit.NewName != "")
+            {
+                List[Table.SelectedIndex].Name = edit.NewName;
+                List[Table.SelectedIndex].Number = edit.NewNumber;
+            }
+            Updata();
+
+            edit.Close();
+        }
     }
     
 }
