@@ -48,7 +48,7 @@ namespace TelephoneBook
                 if (Double.TryParse(Text1.Text, out Temp))
                 {
                     if (b.Search(Text1.Text))
-                    {
+                    { 
                         b.AddNum(Text1.Text, Text2.Text);
                         Updata();
                     }
@@ -80,13 +80,16 @@ namespace TelephoneBook
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
 
-            Edit edit = new Edit(Table.SelectedIndex,b, List[Table.SelectedIndex].Number);
+            Edit edit = new Edit(b, List[Table.SelectedIndex].Number);
             edit.ShowDialog();
 
             if (edit.NewNumber != "" && edit.NewName != "")
             {
-                List[Table.SelectedIndex].Name = edit.NewName;
-                List[Table.SelectedIndex].Number = edit.NewNumber;
+                if (edit.NewNumber != null && edit.NewName != null)
+                {
+                    List[Table.SelectedIndex].Name = edit.NewName;
+                    List[Table.SelectedIndex].Number = edit.NewNumber;
+                }
             }
             Updata();
 

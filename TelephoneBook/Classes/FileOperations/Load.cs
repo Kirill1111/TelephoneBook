@@ -14,8 +14,6 @@ namespace TelephoneBook.FileOperations
         {
             string Str = File.ReadAllText(path);
  
-            if (Str.Length > 0)
-            {
                 result = Str.Split(new char[] { '|', '&' });
                 result[result.Length-1] = null;
                 result = result.Where(x => x != null).ToArray();
@@ -29,13 +27,7 @@ namespace TelephoneBook.FileOperations
                     Myphone.Number = result[i + 1];
                     phone.Add(Myphone);
                 }
-
-                if (phone != null)
                     return phone;
-                else
-                    return null;
-            }
-            return null;
         }
 
     }

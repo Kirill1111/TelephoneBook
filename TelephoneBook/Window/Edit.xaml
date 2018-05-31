@@ -1,6 +1,7 @@
 ﻿<Window x:Class="TelephoneBook.Edit"
             Style="{StaticResource ResourceKey=VS2012WindowStyle}"
         WindowStyle="None"
+        
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,7 +17,7 @@
         <Label Content="Новый номер:" HorizontalAlignment="Left" Margin="14,4,0,0" VerticalAlignment="Top" Width="94"/>
         <TextBox Name="Name" HorizontalAlignment="Left" Margin="137,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
         <TextBox Name="Number" HorizontalAlignment="Left" Margin="137,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200"/>
-        <Button Content="OK" FontSize="10" Margin="137,78,147,14" Click="Button_Click" RenderTransformOrigin="0.688,0.4">
+        <Button Content="OK" FontSize="10" Margin="137,76,147,14" Click="Button_Click" RenderTransformOrigin="0.688,0.4">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1"/>

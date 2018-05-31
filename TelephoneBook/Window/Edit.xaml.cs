@@ -24,7 +24,7 @@ namespace TelephoneBook
         private Book book;
         private string NumberIn;
 
-        public Edit(int Select, Book book,string NumberIn)
+        public Edit(Book book,string NumberIn)
         {
             InitializeComponent();
             this.book = book;
