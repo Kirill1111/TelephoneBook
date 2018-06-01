@@ -11,25 +11,18 @@
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
 
-        <DataTemplate x:Key="lvDataTemplate">
-            <Border Name="border" BorderThickness="1" Padding="5" Margin="0">
-                <Grid>
-                    <TextBlock TextWrapping="WrapWithOverflow" />
-                </Grid>
-            </Border>
-        </DataTemplate>
 
     </Window.Resources>
     
     <Grid>
 
-        <ListView Background="#EFEFF2" Foreground="Black" ItemTemplate="{StaticResource lvDataTemplate}" ItemsSource="{Binding List }" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,280,0">
+        <ListView Background="#EFEFF2" Foreground="Black" ItemsSource="{Binding List }" Name="Table" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,280,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn  Header="Номер"    Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
+                    <GridViewColumn  Header="Номер"  Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}},Path=ActualWidth,Converter={converters:PercentageConverter}, ConverterParameter='0,5'}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Validation.ErrorTemplate="{x:Null}" Text="{Binding Number}" TextWrapping="Wrap" Margin="5"/>
+                                <TextBlock Text="{Binding Number}" TextWrapping="Wrap" Margin="5"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
