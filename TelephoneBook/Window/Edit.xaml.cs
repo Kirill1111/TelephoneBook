@@ -34,32 +34,12 @@ namespace TelephoneBook
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            double Temp;
-
-            if (Name.Text != string.Empty && Number.Text != string.Empty)
+            if (Classes.Test.Tested(Name.Text, Number.Text, book, NumberIn))
             {
-                if (Double.TryParse(Number.Text, out Temp))
-                {
-                    if (!book.Search(Number.Text) || Number.Text == NumberIn)
-                    {
-                        if (Regex.IsMatch(Name.Text, "^[а-яА-ЯёЁa-zA-Z0-9]+$"))
-                        {
-                            NewName = Name.Text;
-                            NewNumber = Number.Text;
-                            this.Close();
-                        }
-                        else
-                            MessageBox.Show("Недопустимые символы");
-                    }
-                    else
-                        MessageBox.Show("Такой номер уже существует");                  
-                }
-                else               
-                    MessageBox.Show("В номере должны быть только цифры");                
+                NewName = Name.Text;
+                NewNumber = Number.Text;
+                this.Close();
             }
-            else
-                MessageBox.Show("Заполните поля");
-
         }
     }
 }

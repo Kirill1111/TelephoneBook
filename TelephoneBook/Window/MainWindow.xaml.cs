@@ -33,35 +33,12 @@ namespace TelephoneBook
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
-        {
-            double Temp;
-
-            if (Text1.Text != string.Empty && Text2.Text != string.Empty)
+        { 
+            if (Classes.Test.Tested(Text2.Text, Text1.Text, b, null))
             {
-                if (Double.TryParse(Text1.Text, out Temp))
-                {
-                    if (!b.Search(Text1.Text))
-                    {
-                        if (Regex.IsMatch(Text2.Text,"^[а-яА-ЯёЁa-zA-Z0-9]+$"))
-                        {
-                            b.AddNum(Text1.Text, Text2.Text);
-                        Updata();
-                        }
-                        else
-                            MessageBox.Show("Недопустимые символы");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Такой номер уже существует");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("В номере должны быть только цифры");
-                }
-            }
-            else
-                MessageBox.Show("Заполните поля");
+                b.AddNum(Text1.Text, Text2.Text);
+                Updata();
+            }   
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -82,9 +59,12 @@ namespace TelephoneBook
                 Edit edit = new Edit(b, List[Table.SelectedIndex].Number);
                 edit.ShowDialog();
 
-                List[Table.SelectedIndex].Name = edit.NewName;
-                List[Table.SelectedIndex].Number = edit.NewNumber;
-                    
+                if (edit.NewName!=null|| edit.NewNumber!=null)
+                {
+                    List[Table.SelectedIndex].Name = edit.NewName;
+                    List[Table.SelectedIndex].Number = edit.NewNumber;
+                }
+
                 Updata();
                 edit.Close();
             }

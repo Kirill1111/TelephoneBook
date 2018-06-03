@@ -56,11 +56,5 @@ namespace TelephoneBook
             return false;
         }
 
-        public void Sort()
-        {
-            
-
-        }
-
     }
 }
