@@ -50,10 +50,16 @@ namespace TelephoneBook
             if (phone != null)
             {
                 if (phone.Find(x => x.Number == Num) == null)
-                    return true;
-                return false;
+                    return false;
+                return true;
             }
-            return true;
+            return false;
+        }
+
+        public void Sort()
+        {
+            
+
         }
 
     }

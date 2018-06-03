@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Text.RegularExpressions;
 
 namespace TelephoneBook
 {
@@ -39,10 +40,15 @@ namespace TelephoneBook
             {
                 if (Double.TryParse(Text1.Text, out Temp))
                 {
-                    if (b.Search(Text1.Text))
+                    if (!b.Search(Text1.Text))
                     {
-                        b.AddNum(Text1.Text, Text2.Text);
+                        if (Regex.IsMatch(Text2.Text,"^[а-яА-ЯёЁa-zA-Z0-9]+$"))
+                        {
+                            b.AddNum(Text1.Text, Text2.Text);
                         Updata();
+                        }
+                        else
+                            MessageBox.Show("Недопустимые символы");
                     }
                     else
                     {
@@ -71,22 +77,21 @@ namespace TelephoneBook
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-
-            Edit edit = new Edit(b, List[Table.SelectedIndex].Number);
-            edit.ShowDialog();
-
-            if (edit.NewNumber != string.Empty && edit.NewName != string.Empty)
+            if (Table.SelectedIndex != -1)
             {
-                if (edit.NewNumber != null && edit.NewName != null)
-                {
-                    List[Table.SelectedIndex].Name = edit.NewName;
-                    List[Table.SelectedIndex].Number = edit.NewNumber;
-                }
-            }
-            Updata();
+                Edit edit = new Edit(b, List[Table.SelectedIndex].Number);
+                edit.ShowDialog();
 
-            edit.Close();
+                List[Table.SelectedIndex].Name = edit.NewName;
+                List[Table.SelectedIndex].Number = edit.NewNumber;
+                    
+                Updata();
+                edit.Close();
+            }
         }
+
+
+
     }
 
 }
